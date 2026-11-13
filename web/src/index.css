@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #070a13;
+  color: #f1f5f9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+/* ---- 主题化滚动条 ---- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1e3a5f #0b1120;
+}
+*::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+*::-webkit-scrollbar-track {
+  background: #0b1120;
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #1d4ed8, #0e7490);
+  border-radius: 8px;
+  border: 2px solid #0b1120;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #3b82f6, #22d3ee);
+}
+
+/* ---- 机房俯视地板网格 ---- */
+.floor-surface {
+  background-color: #0a1120;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.07) 1px, transparent 1px),
+    linear-gradient(rgba(56, 189, 248, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.035) 1px, transparent 1px);
+  background-size: 110px 110px, 110px 110px, 27.5px 27.5px, 27.5px 27.5px;
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  box-shadow: 0 0 80px rgba(14, 116, 144, 0.12) inset, 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* ---- 高亮脉冲 ---- */
+@keyframes rack-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.55); }
+  50% { box-shadow: 0 0 0 7px rgba(56, 189, 248, 0); }
+}
+.rack-highlight {
+  animation: rack-pulse 1.6s ease-out infinite;
+}
+
+@keyframes led-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.led-critical {
+  animation: led-blink 1s ease-in-out infinite;
+}
+
+/* ---- Toast 入场 ---- */
+@keyframes toast-in {
+  from { transform: translateY(16px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.toast-in {
+  animation: toast-in 0.22s ease-out;
+}
+
+/* ---- 视图淡入 ---- */
+@keyframes view-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.view-in {
+  animation: view-in 0.25s ease-out;
+}
+
+/* ---- 拖拽时禁用文本选择 ---- */
+.dragging, .dragging * {
+  user-select: none !important;
+  cursor: grabbing !important;
+}
+
+/* ---- 缩放滑杆 ---- */
+input[type="range"].rk-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #0e7490, #1d4ed8);
+  outline: none;
+}
+input[type="range"].rk-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #38bdf8;
+  border: 2px solid #0b1120;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.7);
+  cursor: pointer;
+}
+input[type="range"].rk-range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #38bdf8;
+  border: 2px solid #0b1120;
+  cursor: pointer;
+}
