@@ -1,0 +1,21 @@
+# 构建产物
+/rackops
+/rackops.exe
+/web/dist/
+/web/node_modules/
+
+# 本地数据与密钥
+*.db
+*.db-wal
+*.db-shm
+*.key
+
+# 日志与临时文件
+*.log
+*.tmp
+
+# 编辑器 / IDE
+.idea/
+.vscode/
+*.iml
+.DS_Store
