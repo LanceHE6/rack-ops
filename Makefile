@@ -10,7 +10,7 @@ install:
 	cd web && $(NPM) ci --include=dev --no-audit --no-fund
 
 frontend:
-	cd web && (test -d node_modules || $(MAKE) -s install) && $(NPM) run build
+	@cd web && if [ ! -d node_modules ]; then $(NPM) ci --include=dev --no-audit --no-fund; fi && $(NPM) run build
 
 test:
 	go test ./...
